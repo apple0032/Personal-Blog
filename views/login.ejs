@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <%- include("./public/head.ejs")%>
+</head>
+<body>
+<%- include("./public/header.ejs")%>
+<section class="main floatfix">
+
+    <section class="main-articles friends" style="margin-left: 0px; min-height: 450px;">
+
+        <div class="login_header">CMS LOGIN</div>
+        <div class="login-box">
+            <form action="/login" method="POST">
+                <div class="">
+                    <input type="text" name="name" placeholder="Name">
+                </div>
+                <div class="">
+                    <input type="password" name="password" placeholder="Password">
+                    <%if(message) {%>
+                    <p> <%= message%> </p>
+                    <% } %>
+                </div>
+                <div class="">
+                    <input type="submit" value="LOGIN">
+                </div>
+            </form>
+        </div>
+
+    </section>
+</section>
+<%- include("./public/footer.ejs")%>
+</body>
+</html>

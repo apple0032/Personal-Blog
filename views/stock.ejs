@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+       <html lang="zh-cn">
+       <head>
+           <%- include("./public/head.ejs")%>
+       </head>
+
+       <style>
+
+       </style>
+       <script>
+           window.onload = function () {
+
+               var limit = 10000;    //increase number of dataPoints by increasing the limit
+               var y = 0;
+               var data = [];
+               var dataSeries = { type: "line" };
+               var dataPoints = [];
+               var dataPoints2 = [];
+
+               var stock = [];
+               stock[0] = 100;
+               stock[1] = 50;
+               stock[2] = 30;
+               stock[3] = 20;
+               stock[4] = 0.5;
+
+               for (var i = 0; i < stock.length; i += 1) {
+                   y += i;
+                   dataPoints.push({
+                       x: i,
+                       y: stock[i],
+                   });
+               }
+
+               var stock2 = [];
+               stock2[0] = 80;
+               stock2[1] = 30;
+               stock2[2] = 20;
+               stock2[3] = 50;
+               stock2[4] = 70;
+
+               for (var i = 0; i < stock2.length; i += 1) {
+                   y += i;
+                   dataPoints2.push({
+                       x: i,
+                       y: stock2[i],
+                   });
+               }
+
+//Better to construct options first and then pass it as a parameter
+               var options = {
+                   zoomEnabled: true,
+                   animationEnabled: true,
+                   title: {
+                       text: "Stock Chart"
+                   },
+                   data: [
+                       {
+                           type: "line",
+                           name: "Martha Vineyard",
+                           showInLegend: true,
+                           dataPoints:dataPoints
+                       },
+                       {
+                           type: "line",
+                           name: "Martha Vineyard2",
+                           showInLegend: true,
+                           dataPoints: dataPoints2
+                       }
+                   ],
+                   axisX: {
+                       title: "Days",
+                       //valueFormatString: "DD MMM,YY"
+                       crosshair: {
+                           enabled: true
+                       }
+                   },
+                   axisY: {
+                       title: "Value",
+                       includeZero: false,
+                       //suffix: " °C"
+                       crosshair: {
+                           enabled: true,
+                           //snapToDataPoint: true
+                       }
+                   },
+                   legend:{
+                       //cursor: "pointer",
+                       fontSize: 16,
+                       //itemclick: toggleDataSeries
+                   },
+                   toolTip:{
+                       shared: true
+                   },
+               };
+
+
+               $("#chartContainer").CanvasJSChart(options);
+
+           }
+       </script>
+       <body>
+       <%- include("./public/header.ejs")%>
+       <section class="main floatfix">
+
+           <div class="row">
+               <div class="col-md-1">
+                   <%- include("./public/aside.ejs")%>
+               </div>
+               <div class="col-md-11">
+                    <br><br>
+                   <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+
+               </div>
+           </div>
+
+
+       </section>
+       <%- include("./public/footer.ejs")%>
+       </body>
+       </html>
+
+

@@ -1,0 +1,72 @@
+<header>
+    <h1 class="header_name">
+        <div class="header_group" id="header_name_1"><a href="/">explore</a></div>
+        <div class="header_group" id="header_name_2">the</div>
+        <div class="header_group" id="header_name_3">world</div>
+    </h1>
+    <div id="codeforfood"></div>
+</header>
+
+
+<script>
+
+    $("#header_name_1").css({"background-color": "#e4c488", "color": "#173879"});
+
+
+    var items = ["#F44336", "#9C27B0", "#3F51B5", "#2196F3", "#E91E63", "#FF4081",
+                 "#BA68C8", "#3F51B5", "#90CAF9", "#B3E5FC", "#29B6F6", "#80DEEA", "#00BCD4",
+                 "#FFF176", "#FDD835", "#FF8F00", "#FFCC80", "#A1887F", "#E0E0E0", "#607D8B",
+                 "#000000" ],
+        item = items[Math.floor(Math.random() * items.length)];
+
+    var counter = 0;
+
+$("#header_name_2").mouseenter(function(){
+    $("#header_name_2").css({"background-color": item, "color": "#173879" ,"transition" : "all 0.5s"});
+
+    item = items[Math.floor(Math.random() * items.length)];
+    counter++;
+
+    if(counter > 5){
+        changeword();
+    }
+});
+
+$("#header_name_3").mouseenter(function(){
+    $("#header_name_3").css({"background-color": item, "color": "#173879" ,"transition" : "all 0.5s"});
+
+    item = items[Math.floor(Math.random() * items.length)];
+    counter++;
+
+    if(counter > 5){
+        changeword();
+    }
+});
+
+    function changeword(){
+
+        counter = 0
+
+        $(".header_name").fadeOut();
+        $("#codeforfood").css({"display": "block"});
+        $('#codeforfood').typeIt({
+            strings: 'AND CODE FOR FOOD',
+            speed: 35,
+            autoStart: true,
+            loop: true,
+            loopDelay: 7000
+        });
+
+        setTimeout(function(){
+            $("#codeforfood").hide();
+            $(".header_name").fadeIn();
+        }, 5000);
+
+    }
+
+    setTimeout(function(){
+        changeword();
+    }, 12000);
+
+
+</script>

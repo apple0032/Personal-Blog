@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <%- include("./public/head.ejs")%>
+</head>
+
+<body>
+<%- include("./public/header.ejs")%>
+<section class="main floatfix">
+    <%- include("./public/aside.ejs")%>
+    <section class="main-articles">
+
+        <div class="article_header">NEW ARTICLE</div>
+        <div class="article_form">
+            <form name="new_post" action="/edit" method="POST" class="edit" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <label for="">TITLE</label>
+                    <input type="text" name="title" placeholder="Give a title">
+                </div>
+                <div class="text-group">
+                    <label for="">CONTENT</label>
+                    <textarea name="content" placeholder=""></textarea>
+                </div>
+                <p><input type="submit" value="SUBMIT"></p>
+            </form>
+        </div>
+
+    </section>
+</section>
+<%- include("./public/footer.ejs")%>
+</body>
+
+<script>
+    function validateForm() {
+        var x = document.forms["new_post"]["title"].value;
+        var y = document.forms["new_post"]["content"].value;
+
+        if (x == "") {
+            alert("Please give a title.");
+            return false;
+        }
+
+        if (y == "") {
+            alert("The content should not be blank.");
+            return false;
+        }
+    }
+</script>
+
+</html>

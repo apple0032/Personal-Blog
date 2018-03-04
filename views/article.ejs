@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <%- include("./public/head.ejs")%>
+</head>
+<body>
+<%- include("./public/header.ejs")%>
+<section class="main floatfix">
+    <%- include("./public/aside.ejs")%>
+    <section class="main-articles articles">
+        <section class="main-articles-title">
+            <h2> <%=article.articleTitle%> </h2>
+            <p>
+                <span>Author：<%=article.articleAuthor%></span><span>Publish：<%=article.articleTime%></span><span> <i class="fas fa-eye"></i> <%=article.articleClick%></span>
+            </p>
+        </section>
+        <section class="main-articles-content">
+            <p><%=article.articleContent%></p>
+        </section>
+    </section>
+    </section>
+</section>
+<%- include("./public/footer.ejs")%>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <%- include("./public/head.ejs")%>
+</head>
+<style>
+
+</style>
+<script>
+    $(function() {
+        $( ".draggablee" ).draggable({ containment: ".main-articles", scroll: false });
+    });
+
+</script>
+<body>
+<%- include("./public/header.ejs")%>
+<section class="main floatfix">
+  <%- include("./public/aside.ejs")%>
+  <section class="main-articles">
+
+      <div class="index_head">
+        <div class="index_button_group">
+            <a href=""><div class="index_button"><i class="fas fa-search"></i></div></a>
+
+            <a href=""><div class="index_button"><i class="fas fa-comment"></i></div></a>
+            <a href=""><div class="index_button"><i class="fas fa-envelope"></i></div></a>
+            <a href=""><div class="index_button"><i class="fas fa-heart"></i></div></a>
+        </div>
+      </div>
+
+      <div class="recent" data-toggle="collapse" data-target="#collapse">
+          <div class="recent_post" style="display: inline-block">Recent Posts</div>
+          <div class="recent_post_arrow" style="display: inline-block; float: right"><i class="fas fa-caret-right"></i></div>
+      </div>
+
+      <div class="row row-articles collapse in" id="collapse">
+        <% for(var  i = 0, max = articles.length; i < max; i++) {%>
+          <% if(i > 0 ) { %>
+          <div class="col-md-4 hidden-sm hidden-xs">
+          <% } else { %>
+              <div class="col-md-4">
+          <% } %>
+            <a href="/articles/<%= articles[i].articleID%>">
+              <div class="main-articles-item draggablee">
+
+                <div class="articles-header">
+                    <%= articles[i].articleTitle %>
+                </div>
+
+                <section class="main-articles-items-des">
+
+                    <div class="articles-contents">
+                        <%= articles[i].articleContent %>
+                    </div>
+
+                    <div class="articles-details">
+                        <span>Author - <%= articles[i].articleAuthor %></span>
+
+                        <span style="float: right"><i class="fas fa-eye"></i> <%= articles[i].articleClick %></span>
+                    </div>
+                    <div class="articles-publish">
+                        <span>Publish - <%= articles[i].articleTime %></span>
+                        <% if(user) {%>
+                        <div style="float: right">
+                            <span class="delete"><a href="/delete/<%= articles[i].articleID %>"><i class="fas fa-trash-alt"></i></a></span>
+                            <span class="modify"><a href="/modify/<%= articles[i].articleID %>"><i class="fas fa-pencil-alt"></i></a></span>
+                        </div>
+                        <% } %>
+                    </div>
+
+                </section>
+
+              </div>
+            </a>
+          </div>
+        <% } %>
+      </div>
+
+      <div class="recent" style="cursor: default">
+          <div class="recent_post" style="display: inline-block">Recent Photos</div>
+          <div class="recent_post_arrow" style="display: inline-block; float: right"><i class="fas fa-caret-right"></i></div>
+      </div>
+
+          <section class="center slider hidden-sm hidden-xs collapse in" id="slider">
+              <div>
+                  <img src="/img/cat980.gif">
+              </div>
+              <div>
+                  <img src="/img/112.png">
+              </div>
+              <div>
+                  <img src="http://placehold.it/350x100?text=3">
+              </div>
+              <div>
+                  <img src="http://placehold.it/350x100?text=4">
+              </div>
+              <div>
+                  <img src="http://placehold.it/350x100?text=5">
+              </div>
+              <div>
+                  <img src="http://placehold.it/350x100?text=6">
+              </div>
+              <div>
+                  <img src="http://placehold.it/350x100?text=7">
+              </div>
+              <div>
+                  <img src="http://placehold.it/350x100?text=8">
+              </div>
+              <div>
+                  <img src="http://placehold.it/350x100?text=9">
+              </div>
+              <div>
+                  <img src="http://placehold.it/350x100?text=10">
+              </div>
+          </section>
+
+          <br>
+
+      <div class="index_subscribe">
+          <div class="index_subscribe_head">Subscribe</div>
+          <div class="index_subscribe_form">
+                <div class="index_subscribe_form_notice">Get our feed through email.</div>
+                <div class="index_subscribe_form_input">
+                    <form name="subscribe" action="/index" method="POST" class="edit subscribe" onsubmit="return validateForm()">
+                    <input type="email" name="email" placeholder="eg: abc@gmail.com">
+                    <!--<div class="index_subscribe_form_submit">SUBSCRIBE</div>-->
+                        <input type="submit" value="SUBSCRIBE">
+                    </form>
+                </div>
+          </div>
+
+      </div>
+
+
+  </section>
+
+
+
+
+</section>
+<%- include("./public/footer.ejs")%>
+</body>
+
+<script>
+    function validateForm() {
+        var x = document.forms["subscribe"]["email"].value;
+        if (x == "") {
+            alert("Please enter your email for subscription.");
+            return false;
+        }
+    }
+
+    $(".center").slick({
+        dots: true,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 5,
+        slidesToScroll: 3,
+    });
+</script>
+
+</html>

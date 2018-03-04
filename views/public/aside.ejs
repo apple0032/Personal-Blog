@@ -1,0 +1,29 @@
+
+<aside>
+    <section class="main-aside-avatar">
+        <img src="/img/112.png" alt="" class="avatar">
+    </section>
+    <ul>
+        <li id="home"><a href="/"><i class="fas fa-home"></i></a></li>
+        <li id="about"><a href="/about"><i class="fas fa-user-secret"></i></a></li>
+
+        <li id="post"><a href="/edit"><i class="fas fa-file-alt"></i></a></li>
+        <li id="stock"><a href="/stock"><i class="fas fa-chart-line"></i></a></li>
+        <li id="friend"><a href="friends"><i class="fas fa-handshake"></i></a></li>
+        <% if(user) { %>
+        <li id="log"><a href="/logout"><i class="fas fa-sign-out-alt"></i></a></li>
+        <% } else { %>
+        <li id="log"><a href="/login"><i class="fas fa-sign-in-alt"></i></a></li>
+        <% } %>
+    </ul>
+</aside>
+
+<script>
+
+    var thistitle = <%- JSON.stringify(title) %>;
+    $("#"+thistitle).css({"background-color": "#ffffff"});
+    $("#"+thistitle).find('a').each(function() {
+        $(this).css({"color": "#000000"});
+    });
+
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <%- include("./public/head.ejs")%>
+</head>
+
+
+<body>
+<%- include("./public/header.ejs")%>
+<section class="main floatfix">
+    <%- include("./public/aside.ejs")%>
+    <section class="main-articles about">
+
+        <div class="about_image">
+            <img src="/img/cat980.gif" alt="" class="img-responsive center-block about_avatar">
+        </div>
+
+        <div class="row">
+            <div id="about_desc"></div>
+        </div>
+
+
+
+    </section>
+</section>
+<%- include("./public/footer.ejs")%>
+
+<script>
+    $('#about_desc').typeIt({
+        strings: [
+            "My name is KEN.",
+            "I am a web developer.",
+            "Love programming & thinking.",
+            "&nbsp;",
+            "<a href='https://github.com/apple0032'><i class=\"fab fa-github\"></i></a> &nbsp;" +
+            "<a href=''><i class=\"fab fa-facebook\"></i></a> &nbsp;" +
+            "<a href=''><i class=\"fab fa-twitter-square\"></i></a> &nbsp;" +
+            "<a href=''><i class=\"far fa-envelope\"></i></a> &nbsp;",
+            "&nbsp;",
+
+            "<div style='color:#f0f0f0'>Coding for food.</div>",
+
+        ],
+        speed: 10,
+        autoStart: true,
+        loop: false,
+        loopDelay: 7000
+    });
+</script>
+
+
+</body>
+</html>
